@@ -2,12 +2,12 @@
 
 import os
 import smtplib
-from CtrolJira.ReadConfig import readconfig
-from CtrolJira.GetVersion import get_version
+from JiraReport.ReadConfig import readconfig
+from JiraReport.GetVersion import get_version
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
-from CtrolJira.LogAndExcept import logger,except_decorate
+from JiraReport.LogAndExcept import logger
 
 class SendMali(object):
 

@@ -4,7 +4,7 @@ __auth__="hongyang"
 
 import datetime
 from jira import JIRA
-from CtrolJira.LogAndExcept import logger,except_decorate
+from JiraReport.LogAndExcept import logger,except_decorate
 
 
 

@@ -1,7 +1,8 @@
 from functools import reduce
-from CtrolJira.GetJiraData import readconfig,GetJiraData
-from CtrolJira.BinPicture import draw
-from CtrolJira.SendMail import SendMali
+from JiraReport.GetJiraData import GetJiraData
+from JiraReport.ReadConfig import readconfig
+from JiraReport.BinPicture import draw
+from JiraReport.SendMail import SendMali
 
 
 def total():

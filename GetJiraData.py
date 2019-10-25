@@ -1,6 +1,6 @@
 #coding = utf-8
 from collections import Counter
-from CtrolJira.JiraInit import JiraInit
+from JiraReport.JiraInit import JiraInit
 
 
 
