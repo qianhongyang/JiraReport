@@ -1,7 +1,7 @@
 #coding = utf-8
 from collections import Counter
 from JiraReport.JiraInit import JiraInit
-
+from JiraReport.LogAndExcept import logger,except_decorate
 
 
 # 获取具体数据
@@ -22,8 +22,9 @@ class GetJiraData(JiraInit):
     def all_dict(li):
         count = Counter(li)
         count_dict = dict(count)  # 类型：<type 'dict'>
-        count_tuple = sorted(count_dict.items(), key=lambda x: x[1], reverse=True)
-        return count_tuple
+        # count_tuple = sorted(count_dict.items(), key=lambda x: x[1], reverse=True)
+        # return count_tuple
+        return count_dict
 
     # 获取jql对象
     def JqlContent(self,jqlcontent):
@@ -41,6 +42,7 @@ class GetJiraData(JiraInit):
                 continue
 
     # 获取模块
+    @except_decorate("获取模块错误")
     def get_components(self,project,version):
         self.get_isss(project, version,
                       "components_li.append(fie.fields.components[0].name)")
@@ -48,6 +50,7 @@ class GetJiraData(JiraInit):
         return self.all_dict(components_li)
 
     # 获取经办人
+    @except_decorate("获取经办人错误")
     def get_assignes(self,project,version):
         self.get_isss(project, version,
                       "assignee_li.append(fie.fields.assignee.displayName)")
@@ -55,10 +58,10 @@ class GetJiraData(JiraInit):
         return self.all_dict(assignee_li)
 
     # 获取bug类型
-    def get_bugtypes(self,project, version):
+    @except_decorate("Bug类型错误")
+    def get_bugtypes(self, project, version):
         self.get_isss(project, version,
                       "bugtypes_li.append(fie.fields.customfield_10301.value)")
-
         return self.all_dict(bugtypes_li)
 
 

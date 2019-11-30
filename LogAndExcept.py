@@ -7,7 +7,8 @@ def except_decorate(content=None):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
             try:
-                func(*args, **kwargs)
+                result = func(*args, **kwargs)
+                return result
             except Exception:
                 logger().error(":%s" %(content))
                 exit(1)

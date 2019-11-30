@@ -28,10 +28,11 @@ class SendMali(object):
             logger().error("文件不存在！")
 
     #编辑邮件内容添加图片
-    def mail_content(self,mail_title="测试报告",total="0", mail_img_name1="Bug类型",mail_img_name2="经办人",mail_img_name3="模块类型"):
+    def mail_content(self,mail_title="测试报告", total="0", mail_img_name1="Bug类型",mail_img_name2="经办人",mail_img_name3="模块类型"):
         subject = mail_title
         msg = MIMEMultipart('related')
-        iso_version,android_version = get_version()
+        #iso_version,android_version = get_version()
+        iso_version, android_version = "111","222"
 
 
         jv = "APP_" + readconfig().split("_")[0]

@@ -10,7 +10,7 @@ plt.rcParams['axes.unicode_minus'] = False
 
 
 
-def draw(title,tup):
+def draw(title,dic):
 
     fig, ax = plt.subplots(figsize=(10, 6))         #定义画图第类型与画布第尺寸（长，宽）
     size = 0.6                                      #定义甜甜圈饼图的空白大小
@@ -18,10 +18,10 @@ def draw(title,tup):
     labels = []
     explode = []
 
+    for k,v in dic.items():
+        labels.append(k + ":" + str(v))
+        sizes.append(v)
 
-    for i in tup:
-        labels.append(i[0] + ":" + str(i[1]))
-        sizes.append(i[1])
 
     print(labels)
     colors = ['#C5D89A', '#ECA29E', '#94BFE0',
@@ -45,11 +45,17 @@ def draw(title,tup):
     plt.yticks(())
 
     nowpath = os.path.dirname(os.path.abspath(__file__))
-    file = os.path.join(nowpath, "picture/%s.png"%title)
+    pic_dir = os.path.join(nowpath, "picture")
+    isExists = os.path.exists(pic_dir)
+    if isExists is False:
+        os.makedirs(pic_dir)
+    file = os.path.join(nowpath, "picture/%s.png" % title)
     try:
         os.remove(file)
     except:
         pass
     plt.savefig(file)
     plt.show()
+
+
 

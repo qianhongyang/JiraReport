@@ -38,6 +38,7 @@ class JiraInit(object):
             logger().info("存在项目%s" % jproject)
         else:
             logger().error("不存在项目%s" % jproject)
+            exit(2)
 
     @staticmethod
     def JqlProjrct(jproject):
